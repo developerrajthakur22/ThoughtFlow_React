@@ -1,0 +1,42 @@
+.SideBarImageContainer {
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 4px solid black;
+    overflow: hidden;
+    position: relative; /* For absolute positioning of inner elements */
+    background-color: #f9f9f9; /* Fallback background color */
+    margin: 0 auto;
+}
+
+.userImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute; /* Position the image within the container */
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.SideBarImageContainer:hover .userImage {
+    transform: scale(1.05); /* Scale the image slightly on hover */
+}
+
+/* Optional: Add a circular overlay for hover effect */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+    border-radius: 50%;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Add a smooth transition effect */
+}
+
+.SideBarImageContainer:hover .overlay {
+    opacity: 1; /* Show the overlay on hover */
+}

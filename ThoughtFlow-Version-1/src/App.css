@@ -1,0 +1,65 @@
+
+
+.container{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* margin-top: 20px; */
+  height: 650px;
+}
+
+.app-container{
+   display: flex;
+}
+
+.post-buttonDiv{
+   display: flex;
+   justify-content: left;
+   margin-top: 10px;
+}
+
+.post-buttonDiv button{
+   margin-right: 15px;
+}
+
+/* your post css */
+.post-form-container {
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.post-input,
+.post-textarea,
+.category-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.post-input{
+  width: 50%;
+}
+
+.category-select{
+  margin-left: 40px;
+}
+
+.post-button {
+  width: 10%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.category-label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 40px;
+  font-weight: bold;
+}

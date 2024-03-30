@@ -1,0 +1,80 @@
+/* Styles for the card container */
+.card {
+    border: 2px solid #ccc;
+    width: 240px;
+    height: 285px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+}
+
+/* Styles for the image container */
+.imageContainer {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 3px solid #fff; /* Adjust border color */
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the image vertically */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a soft glow effect */
+}
+
+/* Styles for the image */
+.image {
+    width: 90%; /* Make sure the image takes up the entire space of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+    object-fit: cover; /* Scale the image while maintaining aspect ratio and cropping excess */
+}
+
+/* Styles for user information */
+.info {
+    margin-top: 10px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #333; /* Darken the text color */
+}
+
+.username {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Styles for buttons container */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+}
+
+/* Styles for buttons */
+.button {
+    width: 60%;
+    margin-bottom: 5px;
+}
+
+/* Styles for the container of people cards */
+.peopleContainer {
+    display: grid;
+    overflow-y: scroll;
+    height: 550px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column size based on available space */
+    gap: 20px; /* Combine row and column gap into one property */
+    justify-content: space-evenly; /* Evenly distribute columns */
+    /* align-items: center;  */
+}

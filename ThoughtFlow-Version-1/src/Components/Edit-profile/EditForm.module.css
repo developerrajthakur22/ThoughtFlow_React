@@ -1,0 +1,129 @@
+/* EditForm.module.css */
+
+.editFormContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+    background-color: #add8e6;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.editFormContainerPw{
+    display: flex;
+    justify-content: left;
+    margin-top: 2%;
+    background-color: #add8e6;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.leftPanel, .rightPanel {
+    margin-top: 1%;
+    margin-bottom: 5%;
+    padding: 20px;
+    width: 48%;
+}
+
+.leftPanel{
+    border-right: 2px solid #add8e6;
+}
+
+.formFields {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: #6c757d;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.submitButton {
+    background-color: #28a745;
+}
+
+.submitButton:hover {
+    background-color: #218838;
+}
+
+.changePasswordButton {
+    background-color: #ffc107;
+}
+
+.changePasswordButton:hover {
+    background-color: #e0a800;
+}
+
+.uploadPhotoButton {
+    background-color: #dc3545;
+}
+
+.uploadPhotoButton:hover {
+    background-color: #c82333;
+}
+
+.categoryCheckboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.checkboxWrapper {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    height: 22px;
+    width: 22px;
+}
+
+input[type="checkbox"] + label {
+    cursor: pointer;
+    user-select: none;
+}
+
+input[type="checkbox"]:checked + label {
+    color: #ff6f61;
+    font-weight: bold;
+}
