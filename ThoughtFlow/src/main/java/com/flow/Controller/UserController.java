@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.flow.Configuration.JwtToken;
 import com.flow.Entity.Post;
@@ -54,25 +55,33 @@ public class UserController {
 	@PostMapping("/addUser")
 	public ResponseEntity<User> addUser(@RequestBody UserProfile user) throws SomethingWentWrong, UserAlreadyExist {
 
-		// Check if a user with the provided email already exists
-	    Optional<UserProfile> existingUserWithEmail = userProfileRepo.findByUsernameOrEmail(user.getEmail());
-	    UserProfile existingEmailUser = existingUserWithEmail.get();
-	    if (existingEmailUser != null) {
-	        throw new UserAlreadyExist("User with email " + user.getEmail() + " already exists.");
-	    }
-	    
-	    Optional<UserProfile> existingUserWithUsername = userProfileRepo.findByUsernameOrEmail(user.getUsername());
-	    UserProfile existingUsernameUser = existingUserWithUsername.get();
-	    if (existingEmailUser != null) {
-	        throw new UserAlreadyExist("User with username " + user.getUsername() + " already exists.");
-	    }
-		
-		// Encode the password
-		user.setRole("USER");
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+	    try {
+	        // Attempt to find user by username or email
+	        Optional<UserProfile> existingUserByUsername = userProfileRepo.findByUsernameOrEmail(user.getUsername());
+	        Optional<UserProfile> existingUserByEmail = userProfileRepo.findByUsernameOrEmail(user.getEmail());
 
-		return new ResponseEntity<User>(userService.createUser(user), HttpStatus.ACCEPTED);
+	        // Check if user already exists
+	        if (existingUserByUsername.isPresent() || existingUserByEmail.isPresent()) {
+	            throw new UserAlreadyExist("User with username '" + user.getUsername() + "' or email '" + user.getEmail() + "' already exists");
+	        } else {
+	            // Encode the password
+	            user.setRole("USER");
+	            user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+	            // Create the user
+	            User createdUser = userService.createUser(user);
+	            return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+	        }
+	    } catch (UserAlreadyExist e) {
+	        // Handle case where user already exists
+	        throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage(), e);
+	    } catch (Exception e) {
+	        // Handle other exceptions
+	        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred while processing the request", e);
+	    }
 	}
+
+
 
 	@GetMapping("/loginTF")
 	public ResponseEntity<UserProfile> login(Authentication auth) throws NotFoundException {
