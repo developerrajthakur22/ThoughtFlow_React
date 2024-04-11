@@ -17,10 +17,6 @@ import UserPost from './Components/check-Profile/UserPost.jsx'
 import EditProfile from './Components/Edit-profile/EditProfile.jsx'
 import SignUp from './Components/Login/SignUp.jsx'
 import Notification from './Components/Notification/Notification.jsx'
-import { jwt } from './Utility/global.js'
-import Alert from '@mui/material/Alert';
-
-
 
 const router = createBrowserRouter([
   {

@@ -17,11 +17,11 @@ const Container = () => {
     return <div className="container" style={{backgroundColor: "#f2f2f2"}}>
         {/* <Post/> */}
         {/* <Profile/> */}
-        <Provider store={store}>
+        
         <Provider store={peopleStore}>
             <Outlet />
         </Provider>
-        </Provider>
+    
     </div>
 
 }

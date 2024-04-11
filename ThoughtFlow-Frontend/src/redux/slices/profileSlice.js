@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL, jwt } from "../../Utility/global";
 
 //API FETCH FOLLOWERS action
-export const fetchFollowers = createAsyncThunk('fetchFollowers', async (userId) => {
+export const fetchFollowerSlice = createAsyncThunk('fetchFollowers', async (userId) => {
     console.log("Followers fetching started")
     const response = await fetch(`${BASE_URL}/UserFollower/${userId}`, {
         headers: {
@@ -16,7 +16,7 @@ export const fetchFollowers = createAsyncThunk('fetchFollowers', async (userId) 
 
 
 //API FETCH FOLLOWING action
-export const fetchFollowing = createAsyncThunk('fetchFollowing', async (userId) => {
+export const fetchFollowingSlice = createAsyncThunk('fetchFollowing', async (userId) => {
     console.log("Following fetching started")
     const response = await fetch(`${BASE_URL}/UserFollowing/${userId}`, {
         headers: {
@@ -45,7 +45,7 @@ export const unfollowApi = createAsyncThunk("unfollow", async ({userId, follower
 })
 
 const INITAIL_STATE = {
-    followersList : [],
+    followersList : [1],
     followingList : [],
     loading: false,
     error: null
@@ -55,25 +55,25 @@ const profileSlice = createSlice({
     name: "Profile",
     initialState: INITAIL_STATE,
     extraReducers: (builder) => {
-        builder.addCase(fetchFollowers.fulfilled, (state, action) => {
+        builder.addCase(fetchFollowerSlice.fulfilled, (state, action) => {
             state.loading = false;
             state.followersList = action.payload 
         })
-        builder.addCase(fetchFollowers.pending, (state, action) => {
+        builder.addCase(fetchFollowerSlice.pending, (state, action) => {
             state.loading = true;
         })
-        builder.addCase(fetchFollowers.rejected, (state, action) => {
+        builder.addCase(fetchFollowerSlice.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         })
-        builder.addCase(fetchFollowing.fulfilled, (state, action) => {
+        builder.addCase(fetchFollowingSlice.fulfilled, (state, action) => {
             state.loading = false;
             state.followingList = action.payload 
         })
-        builder.addCase(fetchFollowing.pending, (state, action) => {
+        builder.addCase(fetchFollowingSlice.pending, (state, action) => {
             state.loading = true;
         })
-        builder.addCase(fetchFollowing.rejected, (state, action) => {
+        builder.addCase(fetchFollowingSlice.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         })

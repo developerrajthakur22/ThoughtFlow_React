@@ -10,7 +10,7 @@ const FollowerList = ({followList, type, checkProfile, removeButtonProp}) => {
         <div className="list-group list-group-flush border-bottom scrollarea" style={{ overflowY: "scroll"  }}>
             {/* list starts from here */}
             
-            {followList.map(card => (
+            {followList.length != 0 && followList.map(card => (
                 <FollowCard key = {card.id} card = {card} type = {type} checkProfile={checkProfile} removeButtonProp= {removeButtonProp}/>   
             ))}
 

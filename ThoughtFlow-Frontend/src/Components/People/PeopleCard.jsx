@@ -12,7 +12,6 @@ const PeopleCard = ({card, followBtn}) => {
     const navigate = useNavigate();
 
     const followState = useSelector(state => state.following)
-    console.log("Following state: "+ followState);
 
     const [followToggle, setFollowToggle] = useState("");
 

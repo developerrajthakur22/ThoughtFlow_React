@@ -13,7 +13,7 @@ const SignUp = () => {
         username: "",
         email: "",
         password: "",
-        feedCategory: [],
+        postCategory: [],
     });
     const [file, setFile] = useState(null);
 
@@ -23,9 +23,9 @@ const SignUp = () => {
         if (type === "checkbox") {
             setFormData({
                 ...formData,
-                feedCategory: checked
-                    ? [...formData.feedCategory, value]
-                    : formData.feedCategory.filter((category) => category !== value),
+                postCategory: checked
+                    ? [...formData.postCategory, value]
+                    : formData.postCategory.filter((category) => category !== value),
             });
         } else {
             setFormData({
@@ -54,13 +54,15 @@ const SignUp = () => {
                 };
 
                 // Submit form data without confirmPassword field and with image field
-                console.log("Form data submitted successfully:", formDataWithoutConfirmPassword);
-                console.log("Selected file:", file);
+                console.log("Form data submitted successfully");
+                console.log(formData)
+                //console.log("Selected file:", file);
                 // Make API call here
                 addUserFunction(formDataWithoutConfirmPassword);
             } else {
                 // Submit form data without confirmPassword field and without image field
-                console.log("Form data submitted successfully:", formDataWithoutConfirmPassword);
+                console.log("Form data submitted successfully");
+                console.log(formData)
                 // Make API call here
                 addUserFunction(formDataWithoutConfirmPassword);
             }
@@ -92,7 +94,7 @@ const SignUp = () => {
             return false;
         }
 
-        if (formData.feedCategory.length !== 3) {
+        if (formData.postCategory.length !== 3) {
             alert("You must select exactly 3 categories.");
             return false;
         }
