@@ -23,7 +23,9 @@ const Header = () => {
         userDetails.fetchUserDetails(userId);
         if(!jwt){
           alert("Session expired!")
+          console.log("Navigate to /Login")
           window.location.href = "/Login"
+          //navigate("/Login")
         }
   }, []);
 
@@ -45,7 +47,8 @@ const Header = () => {
                 label: 'Yes',
                 onClick: () => {
                   document.cookie = `jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-                  navigate("/Login")
+                  window.location.href = "/Login"
+                  // navigate("/Login")
                 }
             },
             {

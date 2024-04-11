@@ -4,11 +4,15 @@ import ProfileCard from "./ProfileCard";
 import { userContext } from "../../store/userContextStore";
 import { BASE_URL, jwt } from "../../Utility/global";
 import { userId } from "../../Utility/global";
+import { useSelector, useDispatch } from "react-redux"
+import { fetchFollowingSlice, fetchFollowerSlice } from "../../redux/slices/profileSlice";
 
 const Profile = () => {
 
     const userDetails = useContext(userContext);
     const user = userDetails.data;
+
+    const dispatch = useDispatch();
 
     const [followers, setFollowers] = useState([]);
     const [following, setFollowing] = useState([]);
